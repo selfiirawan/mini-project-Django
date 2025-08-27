@@ -1,81 +1,52 @@
-
-
 {% extends './assets/base.html' %}
-{% comment %}
-  importing all of the code from base.html to use on home.html
-{% endcomment %}
+{% load static %}
 
-
-{% comment %}
-  allowing home.html to create its own html elements, that will be placed inside {% block mainblock %}{% endblock %} on base.html
-{% endcomment %}
 {% block mainblock %}
-    <h1>🏡 Welcome to Home</h1>
-    <p class="lead">This is the main page of our Django site.</p>
 
-
+    <h2>Favourite Foods</h2>
+    <div class="row row-cols-3 row-cols-md-3 g-4">
+    {% for food in foods %}
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'img/'|add:food|add:'.jpg' %}" class="card-img-top" style="height:200px; object-fit:cover; width:100%;" alt="{{food}}">
+          <div class="card-body">
+            <h5 class="card-title">{{food}}</h5>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    
+    <br>
     <div class="alert alert-info">
     This page uses Bootstrap and Django template!
     </div>
 
+    <h2>Favourite Movies</h2>
+    {% for movie in movies %}
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{% static 'img/'|add:movie.title|add:'.jpg' %}" class="w-100 h-100 rounded-start" style="object-fit: cover;"  alt="{{movie.title}}">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><b>{{movie.title}} ({{movie.year}})</b></h5>
+            {% for genre in movie.genre %}
+              <span class="badge rounded-pill text-bg-dark">{{ genre }}</span>
+            {% endfor %}
+            <br><br>
+            <p class="card-text">{{movie.description}}</p>
+            <p class="card-text"><strong>Director: </strong> {{movie.director}}</p>
+            <p class="card-text"><strong>Rating: </strong>⭐️ {{movie.rating}}/10 
 
-    <h2>Student Name : {{name}}</h2>
-    <h2>Student Age : {{age}}</h2>
-    <h2>Student Phone : {{phone}}</h2>
-    <h2>Student Address : {{address}}</h2>
-
-
-   {% if is_graduated %}
-      <div class="card m-4 p-5 text-dark bg-info text-center">
-        <h2>{{name}} is Graduated!!!!!!</h2>
-      </div>
-   {% endif %}
-
-    <br>
-    <hr>
-    <h2>Subjects: </h2>
-
-    {% comment %}
-      {% for i in subjects %}
-        <p>subject : {{i}}</p>
-      {% endfor %}
-    {% endcomment %}
-
-
-    <ul class="list-group">
-
-      {% for subject in subjects %}
-        <li class="list-group-item"> {{subject}} </li>
-      {% endfor %}
-
-    </ul>
-
-    <br>
-    <hr>
-    <h2>Books: </h2>
-
-    {% for book in books %}
-
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title"> {{book.title}}</h5>
-
-          <p class="card-text">
-            <strong>Author : {{book.author}}</strong>
-            <br>
-            <strong>Pages : {{book.pages}}</strong>
-          </p>
-
-        {% if book.read %}
-          <span class="badge bg-success">✅ Read</span>
-        {% else %}
-          <span class="badge bg-warning text-dark">🕒 Not Read</span>
-        {% endif %}
-
+            {% if movie.rating > 4.0 %}
+              <span class="badge rounded-pill text-bg-success">Highly Recommended</span>
+            {% endif %}
+          </div>
         </div>
       </div>
-
+    </div>
     {% endfor %}
 
-
-{% endblock %}
+{% endblock%}

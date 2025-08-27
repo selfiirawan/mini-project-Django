@@ -11,32 +11,32 @@ def home(request):
 
     # 2 - give data to html
     context = {
-        "name": "Alice",
-        "age": 30,
-        "phone": "0123456",
-        "address": "KL",
-        "is_graduated": True,
+        "foods": ["Burger", "Pizza", "Pasta", "Sushi", "Nasi Goreng", "Dessert"],
 
-        "subjects": ["English", "Math", "Coding", "History", "Geo", "Art", "Sport"],
-
-        "books": [
+        "movies": [
             {
-                "title": 'The Python Cookbook',
-                "author": "David Beazley",
-                "pages": 500,
-                "read": False,
+                "title": "Twilight",
+                "genre": ["Fantasy", "Drama", "Romance"],
+                "director": "Catherine Hardwicke",
+                "year": 2008,
+                "description": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
+                "rating": 5.3,
             },
             {
-                "title": "Automate the Boring Stuff",
-                "author": "Al Sweigart",
-                "pages": 400,
-                "read": True,
+                "title": "Harry Potter and The Goblet of Fire",
+                "genre": ["Fantasy", "Adventure", "Family", "Mystery"],
+                "director": "J.K. Rowling",
+                "year": 2005,
+                "description": "Harry Potter finds himself competing in a hazardous tournament between rival schools of magic, but he is distracted by recurring nightmares.",
+                "rating": 7.7,
             },
             {
-                'title': 'Fluent Python',
-                'author': 'Luciano Ramalho',
-                'pages': 800,
-                "read": False,
+                "title": "Escape Room",
+                "genre": ["Action", "Psychological Thriller", "Suspense Mystery"],
+                "director": "Adam Robitel",
+                "year": 2019,
+                "description": "Six strangers find themselves in a maze of deadly mystery rooms and must use their wits to survive.",
+                "rating": 6.4,
             },
         ],
     }
@@ -45,8 +45,3 @@ def home(request):
 
     return render(request, 'myapp/home.html', context)
 
-def about(request):
-    return render(request, 'myapp/about.html', {})
-
-def contact(request):
-    return render(request, 'myapp/contact.html', {})
