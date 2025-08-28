@@ -1,6 +1,7 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from datetime import datetime
 # Create your views here.
 
 def home(request):
@@ -11,6 +12,7 @@ def home(request):
 
     # 2 - give data to html
     context = {
+        "last_update": datetime.now(),
         "foods": ["Burger", "Pizza", "Pasta", "Sushi", "Nasi Goreng", "Dessert"],
 
         "movies": [

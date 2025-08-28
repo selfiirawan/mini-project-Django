@@ -3,6 +3,7 @@
 
 {% block mainblock %}
 
+    <p>Last updated: {{last_update|date:"D, d M Y H:i"}}</p>
     <h2>Favourite Foods</h2>
     <div class="row row-cols-3 row-cols-md-3 g-4">
     {% for food in foods %}
@@ -31,7 +32,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><b>{{movie.title}} ({{movie.year}})</b></h5>
+            <h5 class="card-title"><b>{{movie.title|upper}} ({{movie.year}})</b></h5>
             {% for genre in movie.genre %}
               <span class="badge rounded-pill text-bg-dark">{{ genre }}</span>
             {% endfor %}
