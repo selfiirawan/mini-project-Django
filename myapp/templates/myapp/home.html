@@ -28,12 +28,12 @@
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{% static 'img/'|add:movie.title|add:'.jpg' %}" class="w-100 h-100 rounded-start" style="object-fit: cover;"  alt="{{movie.title}}">
+          <img src="{{ movie.image }}" class="w-100 h-100 rounded-start" style="object-fit: cover;"  alt="{{movie.title}}">
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><b>{{movie.title|upper}} ({{movie.year}})</b></h5>
-            {% for genre in movie.genre %}
+            {% for genre in movie.get_genres %}
               <span class="badge rounded-pill text-bg-dark">{{ genre }}</span>
             {% endfor %}
             <br><br>

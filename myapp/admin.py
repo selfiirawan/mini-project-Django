@@ -9,5 +9,7 @@ class MovieAdmin(admin.ModelAdmin):
         "year",
         "genre",
         "director",
-        "rating"
+        "rating",
+        "description",
+        "image",
     ]

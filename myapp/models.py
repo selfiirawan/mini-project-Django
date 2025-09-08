@@ -7,9 +7,14 @@ class Movie(models.Model):
     genre = models.CharField(max_length=100)
     director = models.CharField(max_length=100)
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=0.0, null=True, blank=True)
+    description = models.CharField(max_length=600, null=True, blank=True)
+    image = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return self.title
+
+    def get_genres(self):
+        return self.genre.split(",")
 
 # title
 # year
