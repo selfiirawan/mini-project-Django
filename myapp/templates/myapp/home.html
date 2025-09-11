@@ -5,25 +5,48 @@
 
     <p>Last updated: {{last_update|date:"D, d M Y H:i"}}</p>
     <h2>Favourite Foods</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      {% for food in foods%}
-      <div class="col">
-        <div class="card h-100">
-          <img src="{{ food.image }}" class="card-img-top fixed-img" alt="{{ food.name }}">
-          <div class="card-body">
-            <h4 class="card-title">{{ food.name }}</h4>
-            <p class="card-text">{{ food.description }}</p>
-          </div>
-        </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        {% for food in foods %}
+          <button type="button" data-bs-target="#carouselExampleCaptions" 
+                  data-bs-slide-to="{{ forloop.counter0 }}" 
+                  class="{% if forloop.first %}active{% endif %}" 
+                  aria-current="{% if forloop.first %}true{% endif %}" 
+                  aria-label="Slide {{ forloop.counter }}">
+          </button>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-    
-    <br>
-    <div class="alert alert-info">
-    This page uses Bootstrap and Django template!
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        {% for food in foods %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="carousel-img-container">
+              <img src="{{ food.image }}" class="d-block w-100 carousel-img" alt="{{ food.title }}">
+              <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-caption d-md-block">
+              <h5>{{ food.name }}</h5>
+              <p>{{ food.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
+    
+    <br><br>
     <h2>Favourite Movies</h2>
     {% for movie in movies %}
     <div class="card mb-3" style="max-width: 540px;">
