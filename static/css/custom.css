@@ -5,3 +5,15 @@
 .navbar-brand {
     color: white !important;
 }
+
+.fixed-img {
+  height: 200px !important;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .fixed-img {
+    height: 150px !important;
+  }
+}

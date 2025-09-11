@@ -16,8 +16,10 @@ class Movie(models.Model):
     def get_genres(self):
         return self.genre.split(",")
 
-# title
-# year
-# genre
-# director
-# rating
+class Food(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=600, null=True, blank=True)
+    image = models.CharField(max_length=300, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

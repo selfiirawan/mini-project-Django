@@ -5,17 +5,18 @@
 
     <p>Last updated: {{last_update|date:"D, d M Y H:i"}}</p>
     <h2>Favourite Foods</h2>
-    <div class="row row-cols-3 row-cols-md-3 g-4">
-    {% for food in foods %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for food in foods%}
       <div class="col">
-        <div class="card">
-          <img src="{% static 'img/'|add:food|add:'.jpg' %}" class="card-img-top" style="height:200px; object-fit:cover; width:100%;" alt="{{food}}">
+        <div class="card h-100">
+          <img src="{{ food.image }}" class="card-img-top fixed-img" alt="{{ food.name }}">
           <div class="card-body">
-            <h5 class="card-title">{{food}}</h5>
+            <h4 class="card-title">{{ food.name }}</h4>
+            <p class="card-text">{{ food.description }}</p>
           </div>
         </div>
       </div>
-    {% endfor %}
+      {% endfor %}
     </div>
     
     <br>
