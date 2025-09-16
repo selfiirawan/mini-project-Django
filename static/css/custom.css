@@ -1,8 +1,3 @@
-body {
-  background: #4670a3;
-  background: radial-gradient(circle, rgba(70, 112, 163, 1) 0%, rgba(31, 15, 18, 1) 100%);
-  color: white;
-}
 
 .carousel-img-container {
   position: relative;
