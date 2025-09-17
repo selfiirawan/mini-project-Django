@@ -22,3 +22,10 @@ def home(request):
     # 3 (go to home.html) - use data on html
 
     return render(request, 'myapp/home.html', {"movies": movies, "foods": foods, **context})
+
+
+def contact(request):
+    return render(request, 'myapp/contact.html', {})
+
+def about(request):
+    return render(request, 'myapp/about.html', {})
