@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from datetime import datetime
-from myapp.models import Movie, Food
+from myapp.models import Movie, Food, TeamMember
 # Create your views here.
 
 def home(request):
@@ -24,8 +24,12 @@ def home(request):
     return render(request, 'myapp/home.html', {"movies": movies, "foods": foods, **context})
 
 
-def contact(request):
-    return render(request, 'myapp/contact.html', {})
-
 def about(request):
     return render(request, 'myapp/about.html', {})
+
+
+def contact(request):
+
+    team_members = TeamMember.objects.all()
+
+    return render(request, 'myapp/contact.html', {"team_members": team_members})
