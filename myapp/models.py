@@ -27,7 +27,7 @@ class Food(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField(default=0, null=True, blank=True)
-    role = models.CharField(max_length=100)
+    role = models.CharField(max_length=100, null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
