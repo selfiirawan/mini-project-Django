@@ -22,3 +22,11 @@ class FoodAdmin(admin.ModelAdmin):
         "image",
     ]
 
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = [
+        "name",
+        "age",
+        "role",
+        "is_active",
+    ]
