@@ -49,7 +49,6 @@ def join_us(request):
         TeamMember.objects.create(
             name=name,
             role=role,
-            age=age,
-            is_active=False,            
+            age=age,            
         )
     return render(request, 'myapp/join_us.html', {})
