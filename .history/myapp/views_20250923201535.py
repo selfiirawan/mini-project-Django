@@ -32,12 +32,4 @@ def contact(request):
 
     team_members = TeamMember.objects.all()
 
-    context = {
-        "team_members": team_members,
-    }
-
-    return render(request, 'myapp/contact.html', context)
-
-
-def join_us(request):
-    return render(request, 'myapp/join_us.html', {})
+    return render(request, 'myapp/contact.html', {"team_members": team_members})

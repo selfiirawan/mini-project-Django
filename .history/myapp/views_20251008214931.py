@@ -37,7 +37,3 @@ def contact(request):
     }
 
     return render(request, 'myapp/contact.html', context)
-
-
-def join_us(request):
-    return render(request, 'myapp/join_us.html', {})

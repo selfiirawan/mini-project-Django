@@ -25,7 +25,6 @@ class FoodAdmin(admin.ModelAdmin):
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
     list_display = [
-        "id",
         "name",
         "age",
         "role",

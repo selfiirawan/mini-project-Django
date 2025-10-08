@@ -19,7 +19,7 @@ from myapp.views import (
     home, 
     contact, 
     about, 
-    join_us,
+    join_us
 )
 
 urlpatterns = [
