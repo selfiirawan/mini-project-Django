@@ -35,12 +35,6 @@ def contact(request):
 
 def join_us(request):
 
-    team_members = TeamMember.objects.all()
-
-    context = {
-        "team_members": team_members,
-    }
-
     if request.method == "POST":
         name = request.POST.get("name")
         role = request.POST.get("role")
@@ -52,5 +46,4 @@ def join_us(request):
             age=age,
             is_active=False,            
         )
-
-    return render(request, 'myapp/join_us.html', context)
+    return render(request, 'myapp/join_us.html', {})

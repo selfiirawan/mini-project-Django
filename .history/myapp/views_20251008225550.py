@@ -52,5 +52,5 @@ def join_us(request):
             age=age,
             is_active=False,            
         )
-
-    return render(request, 'myapp/join_us.html', context)
+        
+    return render(request, 'myapp/join_us.html', {})

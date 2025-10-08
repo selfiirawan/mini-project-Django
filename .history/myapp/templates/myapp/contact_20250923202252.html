@@ -1,0 +1,22 @@
+{% extends './assets/base.html' %}
+
+{% block mainBlock %}
+    <h1>Our Team Members</h1>
+    <br>
+
+    <div class="row">
+        {% for member in team_members %}
+            {% if member.is_active %}
+            <div class="col-sm-6  mb-3 mb-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.name }}, {{member.age}}</h5>
+                        <p class="card-text">{{ member.role }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
