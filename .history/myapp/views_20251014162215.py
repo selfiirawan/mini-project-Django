@@ -46,7 +46,7 @@ def join_us(request):
         role = request.POST.get("role")
         age = request.POST.get("age")
 
-        print(f"\nName: {name}")
+        print(f"/nName: {name}")
         print(f"Role: {role}")
         print(f"Age: {age}\n")
 
