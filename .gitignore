@@ -204,4 +204,4 @@ __marimo__/
 .streamlit/secrets.toml
 
 # history 
-.history/
+.history
