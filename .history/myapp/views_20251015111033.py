@@ -58,23 +58,3 @@ def join_us(request):
         )
 
     return render(request, 'myapp/join_us.html', context)
-
-
-def create_product(request):
-
-    if request.method == "POST":
-        name = request.POST.get("name")
-        price = request.POST.get("price")
-        description = request.POST.get("description")
-        image = request.POST.get("image")
-
-        Product.objects.create(
-            name=name,
-            price=price,
-            description=description,
-            image=image,
-        )
-
-        return redirect("home")
-
-    return render(request, 'myapp/create_product.html', {})

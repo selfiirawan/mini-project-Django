@@ -1,0 +1,11 @@
+{% extends './assets/base.html' %}
+
+{% block mainBlock %}
+    <h1>Add Products</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="image">Image</label>
+        <input type="url" id="image" name="image" class="form-control" required>
+    </form>
+{% endblock %}

@@ -31,5 +31,5 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('contact/', contact, name="contact"),
     path('join-us/', join_us, name="join_us"),
-    path('create-product/', create_product, name="create_product"),
+    path('create-product/', )
 ]
