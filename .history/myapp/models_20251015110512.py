@@ -36,7 +36,7 @@ class TeamMember(models.Model):
 class Product(models.Model):
     image = models.CharField(max_length=300)
     name = models.CharField(max_length=150)
-    price = models.IntegerField(default=0)
+    price = models.IntegerField()
     description = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
