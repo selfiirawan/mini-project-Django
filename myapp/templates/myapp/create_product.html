@@ -1,12 +1,14 @@
 {% extends './assets/base.html' %}
 
 {% block mainBlock %}
+
+    <!-- Display Products -->
     <h1>All Products</h1>
     <br>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for product in products %}
         <div class="card mx-3" style="width: 18rem;">
-            <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}" style="height: 200px; object-fit: cover;">
+            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
             <div class="card-body">
                 <h4 class="card-title">{{ product.name }}</h4>
                 <p>RM {{ product.price }}</p>
@@ -16,8 +18,11 @@
         </div>
         {% endfor %}
     </div>
+
     <br><br>
     <hr>
+
+    <!-- Add New Product Form --> 
     <h1>Add Products</h1>
 
     <form method="post">
@@ -44,4 +49,5 @@
 
         <button type="submit" class="btn btn-dark">Submit</button>
     </form>
+
 {% endblock %}
