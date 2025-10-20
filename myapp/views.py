@@ -62,6 +62,12 @@ def join_us(request):
 
 def create_product(request):
 
+    products = Product.objects.all()
+
+    context = {
+        "products": products,
+    }
+
     if request.method == "POST":
         name = request.POST.get("name")
         price = request.POST.get("price")
@@ -79,6 +85,7 @@ def create_product(request):
             image=image,
         )
 
-        return redirect("home")
+        #return redirect("home")
+        return redirect("create_product")
 
-    return render(request, 'myapp/create_product.html', {})
+    return render(request, 'myapp/create_product.html', context)

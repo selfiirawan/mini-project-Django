@@ -1,6 +1,23 @@
 {% extends './assets/base.html' %}
 
 {% block mainBlock %}
+    <h1>All Products</h1>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="card mx-3" style="width: 18rem;">
+            <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+                <h4 class="card-title">{{ product.name }}</h4>
+                <p>RM {{ product.price }}</p>
+                <p class="card-text">{{ product.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br><br>
+    <hr>
     <h1>Add Products</h1>
 
     <form method="post">
