@@ -17,11 +17,13 @@ def home(request):
     # 2 - give data to html
     context = {
         "last_update": datetime.now(),
+        "movies": movies,
+        "foods": foods,
     }
     
     # 3 (go to home.html) - use data on html
 
-    return render(request, 'myapp/home.html', {"movies": movies, "foods": foods, **context})
+    return render(request, 'myapp/home.html', context)
 
 
 def about(request):
