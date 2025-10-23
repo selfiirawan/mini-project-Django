@@ -120,6 +120,25 @@ def edit_product(request, product_id):
     
     product = Product.objects.get(id=product_id)
 
+    # after user clicks the "Save" button
+    if request.method == "POST":
+        
+        # get the updated data from the form 
+        image = request.POST.get("image")
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+
+        # update the model 
+        product.image = image
+        product.name = name
+        product.price = price
+        product.description = description
+        
+        product.save()
+
+        return redirect("create_product")
+
     context = {
         "product": product,
     }

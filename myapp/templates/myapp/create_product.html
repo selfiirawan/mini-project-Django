@@ -43,7 +43,7 @@
         {% csrf_token %}
         <div class="mb-3">
             <label for="image">Image</label>
-            <input type="url" id="image" name="image" class="form-control" required>
+            <input type="url" id="image" name="image" class="form-control" placeholder="Enter image URL" required>
         </div>
 
         <div class="mb-3">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="price">Price</label>
+            <label for="price">Price (RM)</label>
             <input type="number" name="price" id="price" class="form-control" min="0" required>
         </div>
 
