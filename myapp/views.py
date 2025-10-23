@@ -110,6 +110,18 @@ def delete_product(request, product_id):
     if request.method == "POST":
         product = Product.objects.get(id=product_id)
 
+        print(f"\nDeleting product: {product.name} ({product.id})\n")
         product.delete()
 
     return redirect("create_product")
+
+
+def edit_product(request, product_id):
+    
+    product = Product.objects.get(id=product_id)
+
+    context = {
+        "product": product,
+    }
+
+    return render(request, 'myapp/edit_product.html', context)

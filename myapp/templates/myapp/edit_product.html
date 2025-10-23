@@ -1,0 +1,31 @@
+{% extends './assets/base.html' %}
+
+{% block mainBlock %}
+    <h1>Edit Product</h1>
+    <img src="{{product.image}}" alt="{{product.name}}" class="d-block mx-auto" style="height: 200px; object-fit: contain;">
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="image">Image</label>
+            <input type="url" id="image" name="image" class="form-control" value="{{product.image}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{product.name}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" class="form-control" min="0" value="{{product.price}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="form-control">{{product.description}}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+{% endblock %}
