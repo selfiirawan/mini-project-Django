@@ -89,3 +89,13 @@ def create_product(request):
         return redirect("create_product")
 
     return render(request, 'myapp/create_product.html', context)
+
+
+def delete_all_products(request):
+
+    if request.method == "POST":
+        products = Product.objects.all()
+
+        products.delete()
+        
+    return redirect("home")
