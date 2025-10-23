@@ -63,9 +63,11 @@ def join_us(request):
 def create_product(request):
 
     products = Product.objects.all()
+    count_products = products.count()
 
     context = {
         "products": products,
+        "count_products": count_products,
     }
 
     if request.method == "POST":
@@ -97,5 +99,5 @@ def delete_all_products(request):
         products = Product.objects.all()
 
         products.delete()
-        
+
     return redirect("home")

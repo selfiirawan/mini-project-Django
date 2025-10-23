@@ -4,6 +4,7 @@
 
     <!-- Display and Delete Products -->
     <h1>All Products</h1>
+    <p>Total products: {{ count_products }} </p>
 
     <form method="post" action="{% url 'delete_all_products' %}">
         {% csrf_token %}
