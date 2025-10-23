@@ -22,6 +22,7 @@ from myapp.views import (
     join_us,
     create_product,
     delete_all_products,
+    delete_product,
 )
 
 urlpatterns = [
@@ -34,4 +35,5 @@ urlpatterns = [
     path('join-us/', join_us, name="join_us"),
     path('create-product/', create_product, name="create_product"),
     path('delete-all-products/', delete_all_products, name="delete_all_products"),
+    path('delete-product/<product_id>/', delete_product, name="delete_product")
 ]

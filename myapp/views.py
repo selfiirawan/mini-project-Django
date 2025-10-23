@@ -101,3 +101,13 @@ def delete_all_products(request):
         products.delete()
 
     return redirect("home")
+
+
+def delete_product(request, product_id):
+
+    if request.method == "POST":
+        product = Product.objects.get(id=product_id)
+
+        product.delete()
+
+    return redirect("create_product")
