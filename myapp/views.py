@@ -6,6 +6,7 @@ from myapp.models import Movie, Food, TeamMember, Product
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -171,6 +172,7 @@ def user_login(request):
         
         else:
             print("\nInvalid user / password. Please try again!\n")
+            messages.error(request, "Invalid username or password! Please try again.")
 
     return render(request, 'myapp/login.html', {})
 
@@ -195,7 +197,8 @@ def register_user(request):
         confirm_password = request.POST.get("confirm_password")
 
         print(f"\nUsername: {username}")
-        print(f"Password: {password}\n")
+        print(f"Password: {password}")
+        print(f"Confirm Password: {confirm_password}\n")
 
 
         ######## BASIC VALIDATION ########
@@ -203,6 +206,7 @@ def register_user(request):
         # check if the password matches 
         if password != confirm_password:
             print("\nPassword doesn't match!\n")
+            messages.error(request, "Passwords do not match!")
             return render(request, 'myapp/register.html', {})
         
         # return True / False 
@@ -213,6 +217,7 @@ def register_user(request):
         # check if user already exist
         if is_user_exist == True:
             print("\nUser already exist! Please choose another username.\n")
+            messages.error(request, "User already exists! Please choose another username.")
             return render(request, 'myapp/register.html', {})
         
         ##################################
