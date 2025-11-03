@@ -161,7 +161,7 @@ def user_login(request):
 
         user = authenticate(request, username=username, password=password)
 
-        print(f"\nUser: {user}\n")
+        print(f"User: {user}\n")
 
         if user:
             login(request, user)
