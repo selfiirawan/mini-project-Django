@@ -5,6 +5,7 @@ from myapp.models import Movie, Food, TeamMember, Product
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
@@ -186,6 +187,42 @@ def user_logout(request):
 def register_user(request):
 
     if request.method == "POST":
-        print("\nRegistering new user...\n")
+        print("\nRegistering new user...")
+
+        # when user clicks Submit
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        confirm_password = request.POST.get("confirm_password")
+
+        print(f"\nUsername: {username}")
+        print(f"Password: {password}\n")
+
+
+        ######## BASIC VALIDATION ########
+
+        # check if the password matches 
+        if password != confirm_password:
+            print("\nPassword doesn't match!\n")
+            return render(request, 'myapp/register.html', {})
+        
+        # return True / False 
+            # True - if user exist 
+            # False - if user doesn't exist 
+        is_user_exist = User.objects.filter(username=username).exists()
+
+        # check if user already exist
+        if is_user_exist == True:
+            print("\nUser already exist! Please choose another username.\n")
+            return render(request, 'myapp/register.html', {})
+        
+        ##################################
+
+        # create the new user and redirect to login page 
+        user = User.objects.create_user(
+            username=username,
+            password=password,
+        )
+
+        return redirect("user_login")
 
     return render(request, 'myapp/register.html', {})
