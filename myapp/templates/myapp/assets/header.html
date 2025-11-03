@@ -30,19 +30,20 @@
           <li class="nav-item mx-2">
             <a class="nav-link" href="{% url 'create_product' %}">Products</a>
           </li>
+
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+          </li>
+
+        {% else %}
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+          </li>
+
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{% url 'register_user' %}">Register</a>
+          </li>
         {% endif %}
-
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'user_login' %}">Login</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'register_user' %}">Register</a>
-        </li>
 
       </ul>
       <!-- <form class="d-flex" role="search">
