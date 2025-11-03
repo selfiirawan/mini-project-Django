@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 from myapp.models import Movie, Food, TeamMember, Product
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def home(request):
@@ -169,3 +169,12 @@ def user_login(request):
             print("\nInvalid user / password. Please try again!\n")
 
     return render(request, 'myapp/login.html', {})
+
+
+def user_logout(request):
+
+    print("\nUser logged out.\n")
+
+    logout(request)
+
+    return redirect("user_login")
