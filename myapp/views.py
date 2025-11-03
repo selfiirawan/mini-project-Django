@@ -2,6 +2,8 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from myapp.models import Movie, Food, TeamMember, Product
+
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def home(request):
@@ -151,4 +153,19 @@ def user_login(request):
     if request.method == "POST":
         print("\nUser tried to login. \n")
 
-    return render(request, 'myapp/user_login.html', {})
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        print(f"\nUser: {user}\n")
+
+        if user:
+            login(request, user)
+
+            return redirect("home")
+        
+        else:
+            print("\nInvalid user / password. Please try again!\n")
+
+    return render(request, 'myapp/login.html', {})
