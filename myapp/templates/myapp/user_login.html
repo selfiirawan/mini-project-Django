@@ -1,0 +1,22 @@
+{% extends './assets/base.html' %}
+
+{% block mainBlock %}
+    <h1>Login</h1>
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-info mt-2">Login</button>
+    </form>
+{% endblock %}

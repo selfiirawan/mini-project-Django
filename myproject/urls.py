@@ -24,6 +24,7 @@ from myapp.views import (
     delete_all_products,
     delete_product,
     edit_product,
+    user_login,
 )
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
     path('delete-all-products/', delete_all_products, name="delete_all_products"),
     path('delete-product/<product_id>/', delete_product, name="delete_product"),
     path('edit-product/<product_id>/', edit_product, name="edit_product"),
+    path('login/', user_login, name="user_login"),
 ]

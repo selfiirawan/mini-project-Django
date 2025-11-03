@@ -134,7 +134,7 @@ def edit_product(request, product_id):
         product.name = name
         product.price = price
         product.description = description
-        
+
         product.save()
 
         return redirect("create_product")
@@ -144,3 +144,11 @@ def edit_product(request, product_id):
     }
 
     return render(request, 'myapp/edit_product.html', context)
+
+
+def user_login(request):
+
+    if request.method == "POST":
+        print("\nUser tried to login. \n")
+
+    return render(request, 'myapp/user_login.html', {})
