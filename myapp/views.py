@@ -181,3 +181,11 @@ def user_logout(request):
     logout(request)
 
     return redirect("user_login")
+
+
+def register_user(request):
+
+    if request.method == "POST":
+        print("\nRegistering new user...\n")
+
+    return render(request, 'myapp/register.html', {})
