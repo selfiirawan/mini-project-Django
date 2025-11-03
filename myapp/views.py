@@ -4,6 +4,7 @@ from datetime import datetime
 from myapp.models import Movie, Food, TeamMember, Product
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -37,6 +38,7 @@ def contact(request):
     return render(request, 'myapp/contact.html', {})
 
 
+@login_required
 def join_us(request):
 
     team_members = TeamMember.objects.all()
@@ -64,6 +66,7 @@ def join_us(request):
     return render(request, 'myapp/join_us.html', context)
 
 
+@login_required
 def create_product(request):
 
     products = Product.objects.all()

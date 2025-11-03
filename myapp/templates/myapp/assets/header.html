@@ -22,13 +22,15 @@
           <a class="nav-link" href="{% url 'contact' %}">Contact</a>
         </li>
 
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'join_us' %}">Join Us</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{% url 'join_us' %}">Join Us</a>
+          </li>
 
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'create_product' %}">Products</a>
-        </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{% url 'create_product' %}">Products</a>
+          </li>
+        {% endif %}
 
         <li class="nav-item mx-2">
           <a class="nav-link" href="{% url 'user_login' %}">Login</a>
