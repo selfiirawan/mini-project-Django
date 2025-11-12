@@ -1,5 +1,5 @@
 from django.contrib import admin
-from myapp.models import Movie, Food, TeamMember, Product
+from myapp.models import Movie, Food, TeamMember, Product, Department
 
 # Register your models here.
 @admin.register(Movie)
@@ -22,6 +22,14 @@ class FoodAdmin(admin.ModelAdmin):
         "image",
     ]
 
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "name",
+        "description",
+    ]
+
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
     list_display = [
@@ -30,6 +38,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
         "age",
         "role",
         "is_active",
+        "department",
     ]
 
 @admin.register(Product)
