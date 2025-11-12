@@ -8,44 +8,47 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
+      {% with current_url=request.resolver_match.url_name %}
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'about' %}">About</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-        </li>
-
-        {% if user.is_authenticated %}
           <li class="nav-item mx-2">
-            <a class="nav-link" href="{% url 'join_us' %}">Join Us</a>
+            <a class="nav-link {% if current_url == 'home' %}active-page{% endif %}" href="{% url 'home' %}">Home</a>
           </li>
 
           <li class="nav-item mx-2">
-            <a class="nav-link" href="{% url 'create_product' %}">Products</a>
+            <a class="nav-link {% if current_url == 'about' %}active-page{% endif %}" href="{% url 'about' %}">About</a>
           </li>
 
           <li class="nav-item mx-2">
-            <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+            <a class="nav-link {% if current_url == 'contact' %}active-page{% endif %}" href="{% url 'contact' %}">Contact</a>
           </li>
 
-        {% else %}
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="{% url 'user_login' %}">Login</a>
-          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item mx-2">
+              <a class="nav-link {% if current_url == 'join_us' %}active-page{% endif %}" href="{% url 'join_us' %}">Join Us</a>
+            </li>
 
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="{% url 'register_user' %}">Register</a>
-          </li>
-        {% endif %}
+            <li class="nav-item mx-2">
+              <a class="nav-link {% if current_url == 'create_product' %}active-page{% endif %}" href="{% url 'create_product' %}">Products</a>
+            </li>
 
-      </ul>
+            <li class="nav-item mx-2">
+              <a class="nav-link {% if current_url == 'user_logout' %}active-page{% endif %}" href="{% url 'user_logout' %}">Logout</a>
+            </li>
+
+          {% else %}
+            <li class="nav-item mx-2">
+              <a class="nav-link {% if current_url == 'user_login' %}active-page{% endif %}" href="{% url 'user_login' %}">Login</a>
+            </li>
+
+            <li class="nav-item mx-2">
+              <a class="nav-link {% if current_url == 'register_user' %}active-page{% endif %}" href="{% url 'register_user' %}">Register</a>
+            </li>
+          {% endif %}
+
+        </ul>
+      {% endwith %}
       <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
