@@ -2,4 +2,42 @@
 
 {% block mainBlock %}
    
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold">Our Partners</h1>
+                    <p class="lead text-muted">Get to know the amazing studios we collaborate with.</p>
+                </div>
+
+                {% if studios %}
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        {% for studio in studios %}
+                            <div class="card border-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{studio.specialty}}</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">{{studio.name}}</h4>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary mb-3">{{studio.city}}</h6>
+                                    
+                                    {% if studio.description %}
+                                        <p class="card-text">{{ studio.description }}</p>
+                                    {% else %}
+                                        <p><em>No description available.</em></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="card">
+                        <div class="card-body">
+                            Looks like we don't have partner studios yet. Want to be our first? Just fill in the form below!
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
