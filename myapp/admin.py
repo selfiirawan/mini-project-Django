@@ -1,5 +1,5 @@
 from django.contrib import admin
-from myapp.models import Movie, Food, TeamMember, Product, Department
+from myapp.models import Movie, Food, TeamMember, Product, Department, Studio
 
 # Register your models here.
 @admin.register(Movie)
@@ -50,3 +50,16 @@ class ProductAdmin(admin.ModelAdmin):
         "description",
         "image",
     ]
+
+@admin.register(Studio)
+class StudioAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "name",
+        "city",
+        "specialty",
+        "description",
+        "created_at",
+    ]
+
+    search_fields = ("name", "city")

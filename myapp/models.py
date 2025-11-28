@@ -55,3 +55,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Studio(models.Model):
+    name = models.CharField(max_length=120, unique=True)
+    city = models.CharField(max_length=80)
+    specialty = models.CharField(max_length=80)
+    description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

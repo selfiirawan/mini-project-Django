@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
 from datetime import datetime
-from myapp.models import Movie, Food, TeamMember, Product
+from myapp.models import Movie, Food, TeamMember, Product, Studio
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -231,3 +231,14 @@ def register_user(request):
         return redirect("user_login")
 
     return render(request, 'myapp/register.html', {})
+
+
+def studio_list(request):
+    
+    studios = Studio.objects.all()
+
+    context = {
+        "studios": studios,
+    }
+
+    return render(request, 'myapp/studios.html', context)
