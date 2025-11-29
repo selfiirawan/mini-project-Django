@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from myapp.models import Movie, Food, TeamMember, Product, Studio
+from myapp.forms import StudioForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -237,8 +238,18 @@ def studio_list(request):
     
     studios = Studio.objects.all()
 
+    if request.method == "POST":
+        form = StudioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("studio_list")
+    
+    else:
+        form = StudioForm()
+
     context = {
         "studios": studios,
+        "form": form,
     }
 
     return render(request, 'myapp/studios.html', context)

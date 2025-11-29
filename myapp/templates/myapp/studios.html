@@ -36,8 +36,44 @@
                     </div>
                 {% endif %}
 
+                <hr class="my-5">
+
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold">Add a New Studio</h1>
+                    <p class="lead text-muted">Become one of our valued partners by filling out the form below.</p>
+                </div>
+                
+                <form method="POST" class="mt-4">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+                        {{ form.city }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Specialty</label>
+                        {{ form.specialty }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Add Studio
+                    </button>
+                </form>
+
+
             </div>
-        </div>
+        </div> 
     </div>
 
 {% endblock %}
