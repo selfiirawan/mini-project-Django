@@ -28,6 +28,7 @@ from myapp.views import (
     user_logout,
     register_user,
     studio_list,
+    studio_detail,
 )
 
 urlpatterns = [
@@ -46,4 +47,5 @@ urlpatterns = [
     path('logout/', user_logout, name="user_logout"),
     path('register/', register_user, name="register_user"),
     path('studios/', studio_list, name="studio_list"),
+    path('studios/<int:studio_id>/', studio_detail, name="studio_detail"),
 ]

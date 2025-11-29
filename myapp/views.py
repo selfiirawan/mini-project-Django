@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
 from myapp.models import Movie, Food, TeamMember, Product, Studio
 from myapp.forms import StudioForm
@@ -253,3 +253,13 @@ def studio_list(request):
     }
 
     return render(request, 'myapp/studios.html', context)
+
+
+def studio_detail(request, studio_id):
+    studio = get_object_or_404(Studio, id=studio_id)
+
+    context = {
+        "studio": studio,
+    }
+
+    return render(request, 'myapp/studio_detail.html', context)
