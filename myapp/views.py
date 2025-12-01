@@ -236,6 +236,8 @@ def register_user(request):
 
 def studio_list(request):
     
+    city = request.GET.get("city")
+
     studios = Studio.objects.all()
 
     if request.method == "POST":
@@ -247,9 +249,13 @@ def studio_list(request):
     else:
         form = StudioForm()
 
+    if city:
+        studios = studios.filter(city__iexact=city)
+
     context = {
         "studios": studios,
         "form": form,
+        "selected_city": city,
     }
 
     return render(request, 'myapp/studios.html', context)

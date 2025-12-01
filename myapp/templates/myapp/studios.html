@@ -4,12 +4,28 @@
    
     <div class="container py-5">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-10"> 
                 <div class="text-center mb-5">
                     <h1 class="display-4 fw-bold">Our Partners</h1>
                     <p class="lead text-muted">Get to know the amazing studios we collaborate with.</p>
                 </div>
 
+                <!-- CITY FILTER -->
+                {% if selected_city %}
+                    <div class="alert alert-info text-center" role="alert">
+                        <span>Showing studios in <strong>{{ selected_city }}</strong>.</span>
+
+                        <a href="{% url 'studio_list' %}" class="btn btn-link btn-sm">Clear filter</a>
+                    </div>
+                {% endif %}
+
+                <form method="GET" class="d-flex mb-4 gap-2">
+                    <input type="text" name="city" class="form-control" placeholder="Filter by city" value="{{ selected_city|default:'' }}">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </form>
+                <!-- END CITY FILTER -->
+
+                <!-- DISPLAY ALL STUDIOS -->
                 {% if studios %}
                     <div class="d-flex flex-wrap justify-content-center gap-3">
                         {% for studio in studios %}
@@ -40,9 +56,11 @@
                         </div>
                     </div>
                 {% endif %}
+                <!-- END DISPLAY -->
 
                 <hr class="my-5">
 
+                <!-- FORM TO ADD NEW STUDIO -->
                 <div class="text-center mb-5">
                     <h1 class="display-4 fw-bold">Add a New Studio</h1>
                     <p class="lead text-muted">Become one of our valued partners by filling out the form below.</p>
@@ -75,7 +93,7 @@
                         Add Studio
                     </button>
                 </form>
-
+                <!-- END FORM -->
 
             </div>
         </div> 
