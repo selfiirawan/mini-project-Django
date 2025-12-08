@@ -133,3 +133,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # STATIC_ROOT will be used after website is Deployed.
 # It will allow the deployed website to use static files from the `staticfiles` folder
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.googlemail.com"
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = "sky.key135@gmail.com"
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  # app password 
