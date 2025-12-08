@@ -23,11 +23,11 @@
                     <input type="text" name="city" class="form-control" placeholder="Filter by city" value="{{ selected_city|default:'' }}">
                     <button type="submit" class="btn btn-primary">Filter</button>
                 </form>
-                <!-- END CITY FILTER -->
+                <!-- END CITY FILTER --> 
 
                 <!-- DISPLAY ALL STUDIOS -->
                 {% if studios %}
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
                         {% for studio in studios %}
                             <div class="card border-light mb-3" style="max-width: 18rem;">
                                 <div class="card-header">{{studio.specialty}}</div>
@@ -57,8 +57,6 @@
                     </div>
                 {% endif %}
                 <!-- END DISPLAY -->
-
-                <hr class="my-5">
 
                 <!-- FORM TO ADD NEW STUDIO -->
                 <div class="text-center mb-5">
