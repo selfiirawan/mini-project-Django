@@ -75,7 +75,7 @@
                     <div class="card-body p-5">
                         <h2 class="mb-5 text-center fw-bold">Send an Inquiry</h2>
 
-                        <form action="" method="post" role="form" class="php-email-form">
+                        <form action="{% url 'contact_form' %}" method="post" role="form" class="php-email-form">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6 form-group">
