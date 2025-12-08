@@ -29,6 +29,7 @@ from myapp.views import (
     register_user,
     studio_list,
     studio_detail,
+    contact_form,
 )
 
 urlpatterns = [
@@ -48,4 +49,5 @@ urlpatterns = [
     path('register/', register_user, name="register_user"),
     path('studios/', studio_list, name="studio_list"),
     path('studios/<int:studio_id>/', studio_detail, name="studio_detail"),
+    path('contact-form/', contact_form, name="contact_form"),
 ]

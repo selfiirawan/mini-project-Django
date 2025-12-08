@@ -269,3 +269,14 @@ def studio_detail(request, studio_id):
     }
 
     return render(request, 'myapp/studio_detail.html', context)
+
+
+def contact_form(request):
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+    return redirect("contact")
