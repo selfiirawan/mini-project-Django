@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
 # Create your views here.
 
 def home(request):
@@ -281,12 +282,22 @@ def contact_form(request):
         subject = request.POST.get("subject")
         message = request.POST.get("message")
 
+        context = {
+            "name": name,
+            "email": email,
+            "subject": subject,
+            "message": message,
+        }
+
+        html_content = render_to_string("myapp/email.html", context)
+
         send_mail(
             subject=subject,
-            message=message,
+            message=None,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[settings.EMAIL_HOST_USER],
-            fail_silently=False
+            fail_silently=False,
+            html_message=html_content,
         )
 
     return redirect("contact")
