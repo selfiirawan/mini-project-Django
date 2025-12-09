@@ -291,13 +291,20 @@ def contact_form(request):
 
         html_content = render_to_string("myapp/email.html", context)
 
-        send_mail(
-            subject=subject,
-            message=None,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[settings.EMAIL_HOST_USER],
-            fail_silently=False,
-            html_message=html_content,
-        )
+        try:
+            send_mail(
+                subject=subject,
+                message=None,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER],
+                fail_silently=False,
+                html_message=html_content,
+            )
+        
+        except Exception as e:
+            messages.error(request, "An error occurred while sending the email. Please try again later.")
+
+        else:
+            messages.success(request, "Your inquiry has been sent successfully! Please wait for our response.")
 
     return redirect("contact")
