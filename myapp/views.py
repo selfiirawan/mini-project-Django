@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
-from myapp.models import Movie, Food, TeamMember, Product, Studio
+from myapp.models import Movie, Food, TeamMember, Product, Studio, InquiryLogForm
 from myapp.forms import StudioForm
 
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.utils import timezone
 # Create your views here.
 
 def home(request):
@@ -291,6 +292,10 @@ def contact_form(request):
 
         html_content = render_to_string("myapp/email.html", context)
 
+        is_success = False
+        is_error = False
+        error_message = ""
+
         try:
             send_mail(
                 subject=subject,
@@ -302,9 +307,23 @@ def contact_form(request):
             )
         
         except Exception as e:
+            is_error = True 
+            error_message = str(e)
             messages.error(request, "An error occurred while sending the email. Please try again later.")
 
         else:
+            is_success = True
             messages.success(request, "Your inquiry has been sent successfully! Please wait for our response.")
+
+        InquiryLogForm.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+            submitted_at=timezone.now(),
+            is_success=is_success,
+            is_error=is_error,
+            error_message=error_message,
+        )
 
     return redirect("contact")
