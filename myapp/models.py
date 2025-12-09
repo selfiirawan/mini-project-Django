@@ -62,3 +62,19 @@ class Studio(models.Model):
     specialty = models.CharField(max_length=80)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+    
+class InquiryLogForm(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    submitted_at = models.DateTimeField(blank=True, null=True)
+    is_success = models.BooleanField(default=False)
+    is_error = models.BooleanField(default=False)
+    error_message = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.email
