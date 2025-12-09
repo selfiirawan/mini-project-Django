@@ -1,5 +1,13 @@
 from django.contrib import admin
-from myapp.models import Movie, Food, TeamMember, Product, Department, Studio
+from myapp.models import (
+    Movie, 
+    Food, 
+    TeamMember, 
+    Product, 
+    Department, 
+    Studio, 
+    InquiryLogForm,
+)
 
 # Register your models here.
 @admin.register(Movie)
@@ -63,3 +71,21 @@ class StudioAdmin(admin.ModelAdmin):
     ]
 
     search_fields = ("name", "city")
+
+@admin.register(InquiryLogForm)
+class InquiryLogFormAdmin(admin.ModelAdmin):
+    list_display = [
+        "email",
+        "is_success",
+        "is_error",
+        "submitted_at",
+    ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+    
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
